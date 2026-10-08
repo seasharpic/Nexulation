@@ -1,0 +1,56 @@
+title: Services Configuration
+actions:
+  # ========================================================
+  # Telemetry & Diagnostics
+  # ========================================================
+  - !writeStatus: {status: 'Disabling Telemetry and Tracking Services'}
+  
+  # Connected User Experiences and Telemetry (Основная телеметрия)
+  - !service: {name: 'DiagTrack', startup: 4}
+  
+  # WAP Push Message Routing Service (Сбор данных телеметрии)
+  - !service: {name: 'dmwappushservice', startup: 4}
+  
+  # Microsoft (R) Diagnostics Hub Standard Collector
+  - !service: {name: 'diagnosticshub.standardcollector.service', startup: 4}
+
+  # Windows Insider Service (Служба программы оценки Windows)
+  - !service: {name: 'wisvc', startup: 4}
+
+  # ========================================================
+  # Error Reporting
+  # ========================================================
+  - !writeStatus: {status: 'Disabling Error Reporting Service'}
+  
+  # Windows Error Reporting Service (Отправка отчетов об ошибках в Microsoft)
+  - !service: {name: 'WerSvc', startup: 4}
+
+  # ========================================================
+  # Unnecessary Features
+  # ========================================================
+  - !writeStatus: {status: 'Disabling Maps and Retail Demo Services'}
+  
+  # Downloaded Maps Manager (Управление скачанными картами)
+  - !service: {name: 'MapsBroker', startup: 4}
+  
+  # Geolocation Service (Служба геолокации)
+  - !service: {name: 'lfsvc', startup: 4}
+  
+  # Retail Demo Service (Служба розничной демонстрации, нужна только для витрин магазинов)
+  - !service: {name: 'RetailDemo', startup: 4}
+
+  # ========================================================
+  # Storage & Performance Services
+  # ========================================================
+  - !writeStatus: {status: 'Disabling Windows Search Indexing for Disk Optimization'}
+  
+  # Windows Search Indexer (Убирает фоновую индексацию дисков)
+  - !service: {name: 'WSearch', startup: 4}
+
+  # ========================================================
+  # Optional Services (Requires Checkbox in Features)
+  # ========================================================
+  - !writeStatus: {status: 'Disabling Print Spooler', option: 'disable_printer'}
+  
+  # Print Spooler (Диспетчер печати - отключаем, если нет принтера)
+  - !service: {name: 'Spooler', startup: 4, option: 'disable_printer'}

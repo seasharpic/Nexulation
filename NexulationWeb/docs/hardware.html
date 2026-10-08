@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware &amp; BIOS | Nexulation Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="../assets/logo.png" alt="Nexulation Logo" class="w-8 h-8 object-contain">
+          <span class="font-bold text-lg tracking-tight text-white">NEXULATION</span>
+        </a>
+      </div>
+
+      <!-- Top Header Nav (Strictly Download & Documentation) -->
+      <nav class="flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="../index.html#download" class="hover:text-white transition-colors">Download</a>
+        <a href="post-install.html" class="text-cyan-400 font-semibold">Documentation</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="../index.html#download" class="px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-colors shadow-sm">
+          Download Playbook
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-6 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-slate-800/60">
+      
+      <!-- Search Input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <input type="text" placeholder="Search..." class="w-full pl-9 pr-12 py-2 text-xs rounded-lg bg-slate-900 border border-slate-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-cyan-500/50">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">Ctrl K</span>
+        </div>
+      </div>
+
+      <!-- Introduction Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Introduction</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="../index.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Quick Start</a></li>
+          <li><a href="../index.html#features" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">What is Nexulation?</a></li>
+          <li><a href="../index.html#features" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Comparison</a></li>
+        </ul>
+      </div>
+
+      <!-- Playbook Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Playbook</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="../index.html#download" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Running Nexulation</a></li>
+          <li><a href="../index.html#download" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">ISO Injection</a></li>
+        </ul>
+      </div>
+
+      <!-- Setup Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Setup</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="drivers.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Installing Drivers</a></li>
+          <li><a href="post-install.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Post-Install</a></li>
+          <li><a href="hardware.html" class="block py-1.5 px-3 rounded-md font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20">Hardware &amp; BIOS</a></li>
+        </ul>
+      </div>
+
+      <!-- Help Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Help</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="#bios" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Troubleshoot</a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- Center Main Content -->
+    <main class="lg:col-span-6 space-y-10">
+      
+      <!-- Top Title Header -->
+      <div class="border-b border-slate-800/80 pb-6">
+        <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase">Setup</span>
+        <h1 class="text-3xl font-extrabold text-white tracking-tight mt-1 mb-2">Hardware &amp; BIOS</h1>
+        <h2 class="text-xl font-bold text-slate-200">Hardware &amp; BIOS Configuration</h2>
+      </div>
+
+      <!-- Section: XMP / EXPO -->
+      <section id="enabling-xmp-or-expo" class="scroll-mt-24 space-y-4">
+        <h2 class="text-xl font-bold text-white tracking-tight">Enabling XMP / EXPO</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          RAM default speeds run at standard JEDEC frequencies (2133MHz / 4800MHz). Enable XMP (Intel), DOCP (ASUS AMD), or EXPO (AMD DDR5) in BIOS to run your memory at rated speeds and tight sub-timings.
+        </p>
+      </section>
+
+      <!-- Section: Resizable BAR -->
+      <section id="resizable-bar" class="scroll-mt-24 space-y-4 pt-4 border-t border-slate-800/80">
+        <h2 class="text-xl font-bold text-white tracking-tight">Resizable BAR (ReBAR)</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Resizable BAR enables the CPU to negotiate full access to GPU VRAM framebuffers in a single request, eliminating PCIe transfer bottlenecks in DirectX 12 and Vulkan games.
+        </p>
+        <div class="bg-slate-900/80 border border-slate-800 rounded-lg p-4 text-xs text-slate-300">
+          In BIOS: Enable <strong class="text-white">Above 4G Decoding</strong> and set <strong class="text-cyan-400">Re-Size BAR Support</strong> to Auto or Enabled.
+        </div>
+      </section>
+
+      <!-- Section: Updating BIOS/UEFI -->
+      <section id="updating-bios-uefi" class="scroll-mt-24 space-y-4 pt-4 border-t border-slate-800/80">
+        <h2 class="text-xl font-bold text-white tracking-tight">Updating BIOS/UEFI</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Keep your motherboard BIOS updated to receive AGESA microcode updates (AMD) or Microcode 0x12B fixes (Intel 13th/14th Gen stability).
+        </p>
+      </section>
+
+    </main>
+
+    <!-- Right "On this page" TOC Navigation -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-4 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pl-4 border-l border-slate-800/60 text-xs">
+      <div class="flex items-center gap-2 font-bold text-slate-300 uppercase tracking-wider text-[11px]">
+        <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+        On this page
+      </div>
+      <ul class="space-y-1.5 text-slate-400 border-l border-slate-800 pl-3">
+        <li><a href="#enabling-xmp-or-expo" class="block py-1 hover:text-cyan-400 text-cyan-400 font-medium transition-colors">Enabling XMP / EXPO</a></li>
+        <li><a href="#resizable-bar" class="block py-1 hover:text-cyan-400 transition-colors">Resizable BAR (ReBAR)</a></li>
+        <li><a href="#updating-bios-uefi" class="block py-1 hover:text-cyan-400 transition-colors">Updating BIOS/UEFI</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-slate-900 text-center text-xs text-slate-600 mt-20">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>Nexulation Documentation &copy; 2026. All rights reserved.</div>
+      <div class="flex gap-6 text-slate-500">
+        <a href="../index.html" class="hover:text-slate-300">Home</a>
+        <a href="post-install.html" class="hover:text-slate-300">Post-Install</a>
+        <a href="drivers.html" class="hover:text-slate-300">Drivers</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

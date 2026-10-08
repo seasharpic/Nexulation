@@ -1,0 +1,7 @@
+title: Final System Cleanup
+actions:
+  - !writeStatus: {status: 'Cleaning temporary files and installer cache...'}
+  - !cmd:
+      command: 'Executables\clean-temp.cmd'
+      wait: true
+      ignoreErrors: true

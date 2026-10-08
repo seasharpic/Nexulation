@@ -1,0 +1,19 @@
+title: Disabling Windows Defender & SmartScreen
+actions:
+  - !writeStatus: {status: 'Disabling Windows Defender Antivirus...'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender', value: 'DisableAntiSpyware', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender', value: 'DisableRealtimeMonitoring', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableBehaviorMonitoring', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableOnAccessProtection', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableScanOnRealtimeEnable', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableIOAVProtection', type: REG_DWORD, data: '1'}
+  
+  - !writeStatus: {status: 'Disabling SmartScreen...'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\System', value: 'EnableSmartScreen', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'SmartScreenEnabled', type: REG_SZ, data: 'Off'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\AppHost', value: 'EnableWebContentLoaded', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Disabling Defender Services...'}
+  - !service: {name: 'WinDefend', startup: 4, ignoreErrors: true}
+  - !service: {name: 'Sense', startup: 4, ignoreErrors: true}
+  - !service: {name: 'WdNisSvc', startup: 4, ignoreErrors: true}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISO Injection | Nexulation Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="../assets/logo.png" alt="Nexulation Logo" class="w-8 h-8 object-contain">
+          <span class="font-bold text-lg tracking-tight text-white">NEXULATION</span>
+        </a>
+      </div>
+
+      <!-- Top Header Nav (Strictly Download & Documentation) -->
+      <nav class="flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="../index.html#download" class="hover:text-white transition-colors">Download</a>
+        <a href="post-install.html" class="text-cyan-400 font-semibold">Documentation</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="../index.html#download" class="px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-colors shadow-sm">
+          Download Playbook
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-6 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-slate-800/60">
+      
+      <!-- Search Input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <input type="text" placeholder="Search..." class="w-full pl-9 pr-12 py-2 text-xs rounded-lg bg-slate-900 border border-slate-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-cyan-500/50">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">Ctrl K</span>
+        </div>
+      </div>
+
+      <!-- Introduction Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Introduction</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="quick-start.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Quick Start</a></li>
+          <li><a href="what-is-nexulation.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">What is Nexulation?</a></li>
+          <li><a href="comparison.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Comparison</a></li>
+          <li><a href="features.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Features Overview</a></li>
+        </ul>
+      </div>
+
+      <!-- Playbook Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Playbook</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="install.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Running Nexulation</a></li>
+          <li><a href="iso.html" class="block py-1.5 px-3 rounded-md font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20">ISO Injection</a></li>
+          <li><a href="uninstall.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Uninstall</a></li>
+        </ul>
+      </div>
+
+      <!-- Setup Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Setup</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="drivers.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Installing Drivers</a></li>
+          <li><a href="post-install.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Post-Install</a></li>
+        </ul>
+      </div>
+
+      <!-- Help Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Help</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="troubleshoot.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Troubleshoot</a></li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- Center Main Content -->
+    <main class="lg:col-span-6 space-y-10">
+      
+      <!-- Top Title Header -->
+      <div class="border-b border-slate-800/80 pb-6">
+        <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase">Playbook</span>
+        <h1 class="text-3xl font-extrabold text-white tracking-tight mt-1 mb-2">ISO Injection</h1>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          A guide to injecting the Nexulation playbook into a Windows 11 ISO.
+        </p>
+      </div>
+
+      <!-- Section: Known Issues -->
+      <section id="known-issues" class="scroll-mt-24 space-y-4">
+        <h2 class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+          <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          Known Issues
+        </h2>
+
+        <p class="text-slate-400 text-xs leading-relaxed">
+          ISO Injection is experimental and complex process, and as such there are some known issues:
+        </p>
+
+        <ul class="list-disc list-inside text-xs text-slate-300 space-y-2 leading-relaxed">
+          <li>
+            In certain cases the "Could not find log directory" error may appear
+            <ul class="list-disc list-inside text-slate-400 pl-4 mt-1">
+              <li>Try running AME Beta as an administrator</li>
+            </ul>
+          </li>
+          <li>VMware clipboard sharing does not work after the reboot</li>
+          <li>Classic context menu tweak not applied (Use Nexulation Tool)</li>
+          <li>
+            Firefox installation takes a long time (AME Beta issue)
+            <ul class="list-disc list-inside text-slate-400 pl-4 mt-1 space-y-1">
+              <li>Use Task Manager (<kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-[10px] text-slate-300">CTRL</kbd> + <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-[10px] text-slate-300">SHIFT</kbd> + <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-[10px] text-slate-300">ESC</kbd>) to end chocolatey processes</li>
+              <li>As a workaround, turn off internet</li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Accordion dropdown for Fixes -->
+        <details class="group bg-slate-900/90 border border-slate-800 rounded-lg overflow-hidden transition-all duration-200 mt-4">
+          <summary class="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-800/50 transition-colors">
+            <span class="text-xs font-semibold text-white flex items-center gap-2">
+              <svg class="w-3.5 h-3.5 text-slate-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+              Fixes
+            </span>
+          </summary>
+          <div class="p-4 pt-0 border-t border-slate-800/60 text-xs text-slate-400 space-y-2">
+            <p>Ensure ISO image is unmodified Windows 11 22H2 / 23H2 / 24H2 official ISO from Microsoft.</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Section: Essentials -->
+      <section id="essentials" class="scroll-mt-24 space-y-4 pt-6 border-t border-slate-800/80">
+        <h2 class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+          Essentials
+        </h2>
+
+        <!-- Accordion dropdown for Before You Begin... -->
+        <details class="group bg-slate-900/90 border border-slate-800 rounded-lg overflow-hidden transition-all duration-200 mb-4">
+          <summary class="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-800/50 transition-colors">
+            <span class="text-xs font-semibold text-white flex items-center gap-2">
+              <svg class="w-3.5 h-3.5 text-slate-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+              Before You Begin...
+            </span>
+          </summary>
+          <div class="p-4 pt-0 border-t border-slate-800/60 text-xs text-slate-400 space-y-2">
+            <p>Make sure you have at least 16GB free disk space and Rufus or Ventoy installed for bootable media creation.</p>
+          </div>
+        </details>
+
+        <p class="text-slate-400 text-xs leading-relaxed">
+          To begin, you'll need to download a few essential files. These files will help you create a bootable USB drive with the Windows ISO.
+        </p>
+
+        <ul class="list-disc list-inside text-xs text-slate-300 space-y-2">
+          <li><strong class="text-white">AME Beta</strong>: The Ultimate tool for modifying Windows</li>
+          <li><strong class="text-cyan-400">Nexulation Playbook</strong>: Contains all the necessary scripts and configurations for the installation</li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- Right "On this page" TOC Navigation -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-4 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pl-4 border-l border-slate-800/60 text-xs">
+      <div class="flex items-center gap-2 font-bold text-slate-300 uppercase tracking-wider text-[11px]">
+        <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+        On this page
+      </div>
+      <ul class="space-y-1.5 text-slate-400 border-l border-slate-800 pl-3">
+        <li><a href="#known-issues" class="block py-1 hover:text-cyan-400 text-cyan-400 font-medium transition-colors">Known Issues</a></li>
+        <li><a href="#essentials" class="block py-1 hover:text-cyan-400 transition-colors">Essentials</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-slate-900 text-center text-xs text-slate-600 mt-20">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>Nexulation Documentation &copy; 2026. All rights reserved.</div>
+      <div class="flex gap-6 text-slate-500">
+        <a href="../index.html" class="hover:text-slate-300">Home</a>
+        <a href="install.html" class="hover:text-slate-300">Running Nexulation</a>
+        <a href="uninstall.html" class="hover:text-slate-300">Uninstall</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

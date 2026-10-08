@@ -1,0 +1,28 @@
+title: Configuring Windows Components
+actions:
+  - !writeStatus: {status: 'Disabling SMB Direct'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"SmbDirect" /NoRestart'}
+
+  - !status: {status: 'Disabling Work Folder Client'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"Workfolders-client" /NoRestart'}
+
+  - !status: {status: 'Disabling Remote Desktop Connection'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"MSRDC-Infrastructure" /NoRestart'}
+
+  - !status: {status: 'Disabling WCF services & portsharing'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"WCF-Services45" /NoRestart'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"WCF-TCP-PortSharing45" /NoRestart'}
+
+  - !status: {status: 'Disabling Windows Media Player Legacy'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"WindowsMediaPlayer" /NoRestart'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Remove-Capability /CapabilityName:"Media.WindowsMediaPlayer~~~~0.0.12.0" /NoRestart'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"MediaPlayback" /NoRestart'}
+
+  - !status: {status: 'Disabling Steps Recorder'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Remove-Capability /CapabilityName:"App.StepsRecorder~~~~0.0.1.0" /NoRestart'}
+
+  - !status: {status: 'Enabling .NET 3.5'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Enable-Feature /featurename:NetFx3 /NoRestart /All'}
+
+  - !status: {status: 'Enabling DirectPlay'}
+  - !run: {exe: 'DISM.exe', args: '/Online /Enable-Feature /FeatureName:"DirectPlay" /NoRestart /All'}

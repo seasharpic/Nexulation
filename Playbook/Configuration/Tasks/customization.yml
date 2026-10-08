@@ -1,0 +1,219 @@
+title: Customization
+actions:
+  - !writeStatus: {status: 'Restarting Explorer'}
+  - !taskKill: {processName: 'explorer', ignoreErrors: true}
+
+  - !writeStatus: {status: 'Installing StartAllBack'}
+  - !cmd:
+      option: "startallback"
+      runas: currentUserElevated
+      command: 'powershell -Command "Start-Process -FilePath ''Executables\StartAllBack_v3.9.20.5345.exe'' -ArgumentList ''/silent /elevated'' -Wait"'
+      ignoreErrors: true
+
+  - !writeStatus: {status: 'Installing Nilesoft-Shell'}
+  - !software:
+      option: "nilesoftshell"
+      name: "nilesoft-shell"
+      source: chocolatey
+
+  # ========================================================
+  # Dark Theme (Wallpaper, Accent Colors & System Theme)
+  # ========================================================
+  - !writeStatus: {status: 'Applying Dark Theme (Wallpaper, Accent Colors & System Theme)'}
+  - !powerShell:
+      option: "dark"
+      script: 'Executables\Set-Wallpaper.ps1'
+      args: '-WallpaperFile Dark.jpg'
+      wait: true
+      ignoreErrors: true
+      
+  - !registryValue {option: "dark", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'AccentPalette', type: REG_BINARY, data: 'c1,e7,ea,00,a0,c7,cf,00,60,92,a5,00,50,7a,8d,00,3e,61,74,00,28,42,54,00,0e,1d,30,00,88,17,98,00'}
+  - !registryValue {option: "dark", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'StartColorMenu', type: REG_DWORD, data: '4285817150'}
+  - !registryValue {option: "dark", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'AccentColorMenu', type: REG_DWORD, data: '4284074267'}
+  - !registryValue {option: "dark", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '0'}
+  - !registryValue {option: "dark", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '0'}
+
+  # ========================================================
+  # Light Theme (Wallpaper, Accent Colors & System Theme)
+  # ========================================================
+  - !writeStatus: {status: 'Applying Light Theme (Wallpaper, Accent Colors & System Theme)'}
+  - !powerShell:
+      option: "light"
+      script: 'Executables\Set-Wallpaper.ps1'
+      args: '-WallpaperFile Light.jpg'
+      wait: true
+      ignoreErrors: true
+      
+  - !registryValue {option: "light", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'AccentPalette', type: REG_BINARY, data: 'c3,e7,ed,00,a1,c7,d4,00,62,8f,ad,00,50,79,99,00,3e,60,7f,00,28,40,5e,00,0e,1b,38,00,88,17,98,00'}
+  - !registryValue {option: "light", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'StartColorMenu', type: REG_DWORD, data: '4286537790'}
+  - !registryValue {option: "light", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent', value: 'AccentColorMenu', type: REG_DWORD, data: '4284531732'}
+  - !registryValue {option: "light", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '1'}
+  - !registryValue {option: "light", path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '1'}
+
+  - !writeStatus: {status: 'Applying Visual Effects Settings...'}
+  # Visual FX Mode -> Custom (3)
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects', value: 'VisualFXSetting', type: REG_DWORD, data: '3'}
+  # Font Smoothing (2)
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'FontSmoothing', type: REG_SZ, data: '2'}
+  # Drag Full Windows (1)
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'DragFullWindows', type: REG_SZ, data: '1'}
+  # Show Thumbnails (IconsOnly = 0)
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'IconsOnly', type: REG_DWORD, data: '0'}
+  # Translucent Selection (1)
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ListviewAlphaSelect', type: REG_DWORD, data: '1'}
+  # Window Min/Max Animation (0)
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop\WindowMetrics', value: 'MinAnimate', type: REG_SZ, data: '0'}
+  # Taskbar Animations (0)
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAnimations', type: REG_DWORD, data: '0'}
+  # Menu Show Delay (0)
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'MenuShowDelay', type: REG_SZ, data: '0'}
+
+  - !writeStatus: {status: 'Enabling Classic Context Menu', option: "classiccontextmenu"}
+  - !registryValue:
+      path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32'
+      value: ''
+      type: REG_SZ
+      data: ''
+      option: "classiccontextmenu"  
+    
+  - !writeStatus: {status: 'Removing Shortcut Arrow Icons'}
+  - !registryValue:
+      path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer'
+      value: 'link'
+      type: REG_BINARY
+      data: '00000000'
+  - !registryValue:
+      path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons'
+      value: '29'
+      type: REG_SZ
+      data: '%windir%\System32\shell32.dll,50'
+
+  - !writeStatus: {status: 'Centering Taskbar Icons'}
+  # Taskbar Center
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '1'}
+
+  - !writeStatus: {status: 'Disabling Task View Button'}
+  # Disable Task View Button
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MultiTaskingView\AllUpView', value: 'Enabled', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '0'}
+  
+  - !writeStatus: {status: 'Disabling Windows Chat'}
+  # Disable Windows Chat
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat', value: 'ChatIcon', type: REG_DWORD, data: '3'} #Configures the Chat icon on the taskbar
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Adding End Task to Taskbar Context Menu'}
+  # Add End Task
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings', value: 'TaskbarEndTask', type: REG_DWORD, data: '1'}    
+
+  - !writeStatus: {status: 'Removing Home from File Explorer'}
+  # File Explorer
+  # Remove Home
+  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}', operation: delete}
+  - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}', value: 'System.IsPinnedToNameSpaceTree', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Removing Gallery from File Explorer'}
+  # Remove Gallery
+  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}', value: 'System.IsPinnedToNameSpaceTree', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Disabling Network in File Explorer Navigation Pane'}
+  # Network File Explorer
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}', value: 'System.IsPinnedToNameSpaceTree', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Classes\CLSID\{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}', value: 'System.IsPinnedToNameSpaceTree', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Setting File Explorer to open to This PC'}
+  # File Explorer to this PC
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'LaunchTo', type: REG_DWORD, data: '1'}
+
+  - !writeStatus: {status: 'Enabling File Explorer Compact Mode'}
+  # Explorer Compact Mode
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'UseCompactMode', type: REG_DWORD, data: '1'}
+
+  - !writeStatus: {status: 'Extending Icon Cache'}
+  # Extend Icon Cache
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'Max Cached Icons', type: REG_SZ, data: '4096'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'Max Cached Icons', type: REG_SZ, data: '4096'}
+
+  - !writeStatus: {status: 'Enabling Full Context Menu on Items'}
+  # Full Context Menu on Items
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer', value: 'MultipleInvokePromptMinimum', type: REG_DWORD, data: '100'}
+
+  - !writeStatus: {status: 'Adding Take Ownership to Context Menu'}
+  # Take Ownership
+  - !registryValue: {path: 'HKCR\Directory\shell\runas', value: '', type: REG_SZ, data: 'Take Ownership'}
+  - !registryValue: {path: 'HKCR\Directory\shell\runas', value: 'HasLUAShield', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\Directory\shell\runas', value: 'NoWorkingDirectory', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\Directory\shell\runas\command', value: '', type: REG_SZ, data: 'cmd.exe /c takeown /f %1 /r /d y && icacls %1 /grant administrators:F'}
+  - !registryValue: {path: 'HKCR\Directory\shell\runas\command', value: 'IsolatedCommand', type: REG_SZ, data: 'cmd.exe /c takeown /f %1 /r /d y && icacls %1 /grant administrators:F'}
+
+  - !writeStatus: {status: 'Adding New .reg to Context Menu'}
+  # New .reg
+  - !registryValue: {path: 'HKCR\.reg\ShellNew', value: 'NullFile', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\.reg\ShellNew', value: 'ItemName', type: REG_EXPAND_SZ, data: '%systemroot%\regedit.exe,-309'}
+
+  - !writeStatus: {status: 'Adding New .bat to Context Menu'}
+  # New .bat
+  - !registryValue: {path: 'HKCR\.bat\ShellNew', value: 'ItemName', type: REG_EXPAND_SZ, data: '%systemroot%\System32\acppage.dll,-6002'}
+  - !registryValue: {path: 'HKCR\.bat\ShellNew', value: 'NullFile', type: REG_SZ, data: ''}
+
+  - !writeStatus: {status: 'Adding New .ps1 to Context Menu'}
+  # New .ps1
+  - !registryValue: {path: 'HKCR\.ps1', value: '', type: REG_SZ, data: 'Microsoft.PowerShellScript.1'}
+  - !registryValue: {path: 'HKCR\.ps1\ShellNew', value: 'NullFile', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\Microsoft.PowerShellScript.1', value: '', type: REG_SZ, data: 'Windows PowerShell Script'}
+  - !registryValue: {path: 'HKCR\Microsoft.PowerShellScript.1', value: 'FriendlyTypeName', type: REG_SZ, data: 'Windows PowerShell Script'}
+
+  - !writeStatus: {status: 'Adding Install option for .cab files'}
+  # Install .cab
+  - !registryValue: {path: 'HKCR\CABFolder\Shell\RunAs', value: '', type: REG_SZ, data: 'Install'}
+  - !registryValue: {path: 'HKCR\CABFolder\Shell\RunAs', value: 'HasLUAShield', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\CABFolder\Shell\RunAs\Command', value: '', type: REG_SZ, data: 'cmd /k dism /online /add-package /packagepath:"%1"'}
+
+  - !writeStatus: {status: 'Adding Import option for .pow files'}
+  # Import .pow
+  - !registryValue: {path: 'HKCR\.pow', value: '', type: REG_SZ, data: 'Power Plan'}
+  - !registryValue: {path: 'HKCR\.pow', value: 'FriendlyTypeName', type: REG_SZ, data: 'Power Plan'}
+  - !registryValue: {path: 'HKCR\.pow\DefaultIcon', value: '', type: REG_EXPAND_SZ, data: '%SystemRoot%\System32\powercfg.cpl,-202'}
+  - !registryValue: {path: 'HKCR\.pow\shell\Import\command', value: '', type: REG_SZ, data: 'powercfg /import "%1"'}
+
+  - !writeStatus: {status: 'Configuring Hidden Files and Extensions Visibility'}
+  # === Видимость скрытых файлов, системных файлов и расширений ===
+  - !registryValue { path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'Hidden', type: REG_DWORD, data: 1 }
+  - !registryValue { path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowSuperHidden', type: REG_DWORD, data: 1 }
+  - !registryValue { path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'HideFileExt', type: REG_DWORD, data: 0 }
+
+  - !writeStatus: {status: 'Applying Small Titlebar Buttons'}
+  # Small Titlebar Buttons
+  - !registryValue { path: 'HKCU\Control Panel\Desktop\WindowMetrics', value: 'CaptionHeight', type: REG_SZ, data: '-270' }
+  - !registryValue { path: 'HKCU\Control Panel\Desktop\WindowMetrics', value: 'CaptionWidth', type: REG_SZ, data: '-270' }
+
+  - !writeStatus: {status: 'Adding Open CMD Here to Context Menu'}
+  # Open CMD here
+  - !registryValue: {path: 'HKCR\Directory\shell\cmd_here', value: '', type: REG_SZ, data: 'Open CMD here'}
+  - !registryValue: {path: 'HKCR\Directory\shell\cmd_here', value: 'Icon', type: REG_SZ, data: 'cmd.exe'}
+  - !registryValue: {path: 'HKCR\Directory\shell\cmd_here', value: 'SeparatorBefore', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\Directory\shell\cmd_here\command', value: '', type: REG_SZ, data: 'cmd.exe /k cd /d "%1"'}
+  - !registryValue: {path: 'HKCR\Directory\Background\shell\cmd_here', value: '', type: REG_SZ, data: 'Open CMD here'}
+  - !registryValue: {path: 'HKCR\Directory\Background\shell\cmd_here', value: 'Icon', type: REG_SZ, data: 'cmd.exe'}
+  - !registryValue: {path: 'HKCR\Directory\Background\shell\cmd_here', value: 'SeparatorBefore', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\Directory\Background\shell\cmd_here\command', value: '', type: REG_SZ, data: 'cmd.exe /k cd /d "%V"'}
+
+  - !writeStatus: {status: 'Disabling Menu Hover Delay'}
+  # Disable Menu Hover Delay
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'MenuShowDelay', type: REG_SZ, data: '0'}
+
+  - !writeStatus: {status: 'Disabling Mouse Hover Time'}
+  # Mouse Hover Time
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'MouseHoverTime', type: REG_SZ, data: '0'}
+
+  - !writeStatus: {status: 'Removing Shortcut Text Template'}
+  # Remove Shortcut Text
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates', value: 'ShortcutNameTemplate', type: REG_SZ, data: '"%s.lnk"'}
+
+  - !writeStatus: {status: 'Installing Nexulation Tool Companion Utility...', option: 'nexulationtool'}
+  - !powerShell:
+      option: 'nexulationtool'
+      script: 'Executables\Install-NexulationTool.ps1'
+      wait: true
+      ignoreErrors: true

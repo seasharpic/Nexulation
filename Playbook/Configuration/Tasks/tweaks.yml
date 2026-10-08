@@ -1,0 +1,184 @@
+title: Applying tweaks
+actions:
+  # Disable Gamemode
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AllowAutoGameMode', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AutoGameModeEnabled', type: REG_DWORD, data: '0'}
+
+  # Disable Gamebar
+  - !registryValue: {path: 'HKCU\System\GameConfigStore', value: 'GameDVR_Enabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'GamePanelStartupTipIndex', type: REG_DWORD, data: '3'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'ShowStartupPanel', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter', value: 'ActivationType', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR', value: 'AllowGameDVR', type: REG_DWORD, data: '0'} #Enables or disables Windows Game Recording and Broadcasting
+  - !registryValue: {path: 'HKCR\ms-gamebar', value: '', type: REG_SZ, data: 'URL:ms-gamebar'}
+  - !registryValue: {path: 'HKCR\ms-gamebar', value: 'URL Protocol', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\ms-gamebar', value: 'NoOpenWith', type: REG_SZ, data: ''}
+  - !registryValue: {path: 'HKCR\ms-gamebar\shell\open\command', value: '', type: REG_EXPAND_SZ, data: '%systemroot%\System32\systray.exe'}
+
+  # Win32PrioritySeparation = 0x18 (24 decimal)
+  # 1:1 Quantum ratio for stable FPS, minimal latency, and zero FPS drops
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '24'}
+
+  # 2. Настройка приоритета игр (SystemProfile)
+  # Устанавливает приоритет GPU и системы на игры
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'GPU Priority', type: REG_DWORD, data: '8'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'Priority', type: REG_DWORD, data: '6'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'Scheduling Category', type: REG_SZ, data: 'High'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'SFIO Priority', type: REG_SZ, data: 'High'}
+
+  # 3. Отключение троттлинга сети (Network Throttling)
+  # По умолчанию Windows ограничивает обработку сетевых пакетов не мультимедийного трафика.
+  # Значение 4294967295 (ffffffff) отключает это ограничение.
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'NetworkThrottlingIndex', type: REG_DWORD, data: '4294967295'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'SystemResponsiveness', type: REG_DWORD, data: '0'}
+
+  # 4. Отключение Power Throttling (Энергосбережение)
+  # Запрещает системе урезать ресурсы для фоновых процессов (полезно при сворачивании игр или использовании второго монитора)
+  - !registryValue:
+      path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling'
+      value: 'PowerThrottlingOff'
+      type: REG_DWORD
+      data: '1'
+      option: 'powerthrottling'
+
+  # 5. Disable Mouse Acceleration (Enhance Pointer Precision)
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSpeed', type: REG_SZ, data: '0'}
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold1', type: REG_SZ, data: '0'}
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold2', type: REG_SZ, data: '0'}
+
+  # 6. Disable Background Apps globally
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications', value: 'GlobalUserDisabled', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy', value: 'LetAppsRunInBackground', type: REG_DWORD, data: '2'}
+
+  # 7. Disable Hibernation (Frees up disk space and stops unnecessary background writes)
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'HibernateEnabled', type: REG_DWORD, data: '0'}
+
+  # 8. Disable Telemetry and Data Collection (Privacy & Performance)
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection', value: 'AllowTelemetry', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection', value: 'AllowTelemetry', type: REG_DWORD, data: '0'}
+
+  # 9. Disable Web Search in Start Menu (Removes Bing from local search, speeds up Start Menu)
+  - !registryValue: {path: 'HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer', value: 'DisableSearchBoxSuggestions', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Search', value: 'BingSearchEnabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Search', value: 'CortanaConsent', type: REG_DWORD, data: '0'}
+
+  # 10. Disable Sticky Keys & Filter Keys (Prevents interruptions during gaming)
+  - !registryValue: {path: 'HKCU\Control Panel\Accessibility\StickyKeys', value: 'Flags', type: REG_SZ, data: '506'}
+  - !registryValue: {path: 'HKCU\Control Panel\Accessibility\ToggleKeys', value: 'Flags', type: REG_SZ, data: '58'}
+  - !registryValue: {path: 'HKCU\Control Panel\Accessibility\Keyboard Response', value: 'Flags', type: REG_SZ, data: '122'}
+
+  # 11. Disable Windows Update Delivery Optimization (Stops your PC from seeding updates to others)
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config', value: 'DODownloadMode', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization', value: 'DODownloadMode', type: REG_DWORD, data: '0'}
+
+  - !writeStatus: {status: 'Disabling Reserved Storage for Updates'}
+  
+  # Отключение зарезервированного хранилища через DISM (Официальный метод)
+  - !cmd:
+      command: 'dism /Online /Set-ReservedStorageState /State:Disabled'
+      ignoreErrors: true
+      
+  # Отключение через реестр (как указано в описании на вашем скриншоте)
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager', value: 'ShippedWithReserves', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager', value: 'PassedPolicy', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager', value: 'MiscPolicyInfo', type: REG_DWORD, data: '2'}
+
+  # 12. Enable MSI Mode for GPU, USB, Network and Storage (DPC/ISR Latency reduction)
+  - !writeStatus: {status: 'Enabling MSI Mode (Message Signaled Interrupts)...'}
+  - !powerShell:
+      script: 'Executables\Enable-MSIMode.ps1'
+      wait: true
+      ignoreErrors: true
+
+  # 13. CPU Power Plans (AMD / Intel / Default Ultimate)
+  - !writeStatus: {status: 'Applying AMD Ryzen Low-Latency Power Plan...', option: 'amd_powerplan'}
+  - !powerShell:
+      option: 'amd_powerplan'
+      script: 'Executables\Set-AMD-PowerPlan.ps1'
+      wait: true
+      ignoreErrors: true
+
+  - !writeStatus: {status: 'Applying Intel Core Low-Latency Power Plan...', option: 'intel_powerplan'}
+  - !powerShell:
+      option: 'intel_powerplan'
+      script: 'Executables\Set-Intel-PowerPlan.ps1'
+      wait: true
+      ignoreErrors: true
+
+  - !writeStatus: {status: 'Applying Ultimate Performance Plan & Disabling Core Parking...'}
+  - !powerShell:
+      script: 'Executables\Set-UltimatePowerPlan.ps1'
+      wait: true
+      ignoreErrors: true
+
+  # 14. Disable Non-Essential ETW / Autologger Tracing Sessions
+  - !writeStatus: {status: 'Disabling Background ETW Autologger Sessions...'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\AutoLogger-Diagtrack-Listener', value: 'Start', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Circular Kernel Context Logger', value: 'Start', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\CloudExperienceHostOobe', value: 'Start', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener', value: 'Start', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\SQMLogger', value: 'Start', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WdiContextLog', value: 'Start', type: REG_DWORD, data: '0'}
+
+  # 15. NTFS Filesystem Performance Optimization
+  - !writeStatus: {status: 'Optimizing NTFS Filesystem Performance...'}
+  - !cmd: {command: 'fsutil behavior set disablelastaccess 1', ignoreErrors: true}
+  - !cmd: {command: 'fsutil behavior set disable8dot3 1', ignoreErrors: true}
+
+  # 16. SSD & HDD Storage Optimizations
+  - !writeStatus: {status: 'Optimizing SSD & HDD Storage (Enabling TRIM & Disabling Defrag Tasks)...'}
+  - !cmd: {command: 'fsutil behavior set DisableDeleteNotify 0', ignoreErrors: true}
+  - !cmd: {command: 'schtasks /Change /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /Disable', ignoreErrors: true}
+
+  # 17. Keyboard Input Responsiveness (Instant repeat delay & max repeat rate)
+  - !writeStatus: {status: 'Optimizing Keyboard Input Responsiveness...'}
+  - !registryValue: {path: 'HKCU\Control Panel\Keyboard', value: 'KeyboardDelay', type: REG_SZ, data: '0'}
+  - !registryValue: {path: 'HKCU\Control Panel\Keyboard', value: 'KeyboardSpeed', type: REG_SZ, data: '31'}
+
+  # 18. Disable Memory Integrity (HVCI / VBS) for Maximum FPS
+  - !writeStatus: {status: 'Disabling Memory Integrity (HVCI / VBS) for Maximum FPS...'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity', value: 'Enabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard', value: 'EnableVirtualizationBasedSecurity', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard', value: 'RequirePlatformSecurityFeatures', type: REG_DWORD, data: '0'}
+
+  # 19. Disable Windows Insider Watermark & Telemetry Flighting
+  - !writeStatus: {status: 'Disabling Windows Insider Watermark and Telemetry Flighting...'}
+  - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'PaintDesktopVersion', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds', value: 'AllowBuildPreview', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds', value: 'EnableConfigPolicies', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility', value: 'HideInsiderPage', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsSelfHost\Applicability', value: 'EnablePreviewBuilds', type: REG_DWORD, data: '0'}
+
+  # 20. Low-Ping Network Optimization (Option)
+  - !writeStatus: {status: 'Optimizing Network Ping & Disabling Nagle Algorithm...', option: 'low_ping'}
+  - !powerShell:
+      option: 'low_ping'
+      script: 'Executables\Set-LowPing.ps1'
+      wait: true
+      ignoreErrors: true
+
+  # 21. Low-Latency Audio Stack Tuning
+  - !writeStatus: {status: 'Optimizing Windows Audio Stack Latency (WASAPI & DirectSound)...'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio', value: 'GPU Priority', type: REG_DWORD, data: '8'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio', value: 'Priority', type: REG_DWORD, data: '6'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio', value: 'Scheduling Category', type: REG_SZ, data: 'High'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio', value: 'SFIO Priority', type: REG_SZ, data: 'High'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'AudioEngineWithMMCSS', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile', value: 'AudioResamplerQuality', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Audio', value: 'DisableAudioStateTracking', type: REG_DWORD, data: '1'}
+
+  # 22. Heavy-Hitting Real Performance Tweaks (Hypervisor Launch Off, Memory Compression Off, Netsh TCP Low-Latency)
+  - !writeStatus: {status: 'Applying Real Performance Tweaks (Hypervisor Off, Memory Compression Off, Netsh Low-Latency)...'}
+  - !powerShell:
+      script: 'Executables\Set-RealPerformanceTweaks.ps1'
+      wait: true
+      ignoreErrors: true
+
+  # 23. Disabling Windows Widgets (News and Interests / WebExperience)
+  - !writeStatus: {status: 'Disabling Windows Widgets and News & Interests...'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Dsh', value: 'AllowNewsAndInterests', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds', value: 'EnableFeeds', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarDa', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests', value: 'value', type: REG_DWORD, data: '0'}

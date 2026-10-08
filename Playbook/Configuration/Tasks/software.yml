@@ -1,0 +1,160 @@
+title: Software
+description: Installs browsers, game launchers, and messengers
+privilege: TrustedInstaller
+actions:
+  # ========================================================
+  # Gaming Redistributables (Visual C++ AIO & DirectX)
+  # ========================================================
+  - !writeStatus: {status: 'Installing Visual C++ Redistributable AIO', option: "vcpp-dx"}
+  - !download:
+      option: "vcpp-dx"
+      url: 'https://github.com/abbodi1406/vcredist/releases/latest/download/VisualCppRedist_AIO_x86_x64.exe'
+      destination: "VisualCppRedist_AIO.exe"
+
+  - !run:
+      option: "vcpp-dx"
+      exeDir: true
+      exe: "VisualCppRedist_AIO.exe"
+      args: '/y'
+      weight: 70
+
+  - !writeStatus: {status: 'Installing DirectX', option: "vcpp-dx"}
+  - !software:
+      option: "vcpp-dx"
+      name: "directx"
+      source: chocolatey
+
+  # ========================================================
+  # Browsers
+  # ========================================================
+  - !writeStatus: {status: 'Installing Thorium', option: "thorium"}
+  - !software:
+      option: "thorium"
+      name: "thorium"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing LibreWolf', option: "librewolf"}
+  - !software:
+      option: "librewolf"
+      name: "librewolf"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Zen Browser', option: "zenbrowser"}
+  - !software:
+      option: "zenbrowser"
+      name: "zen-browser"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Brave', option: "brave"}
+  - !software:
+      option: "brave"
+      name: "brave"
+      source: chocolatey
+
+  # ========================================================
+  # Game Launchers
+  # ========================================================
+  - !writeStatus: {status: 'Installing VK Play (Manual steps required in the window)', option: "vkplay"}
+  - !download:
+     option: "vkplay"
+     url: 'https://static.gc.vkplay.ru/VKPlayLoader.exe'
+     destination: "VKPlayLoader.exe"
+  - !run:
+     option: "vkplay"     
+     exeDir: true
+     exe: "VKPlayLoader.exe"
+     args: '/S'
+     weight: 70
+
+  - !writeStatus: {status: 'Installing Steam', option: "steam"}
+  - !software:
+      option: "steam"
+      name: "steam"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Epic Games Launcher', option: "egl"}
+  - !software:
+      option: "egl"
+      name: "epicgameslauncher"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Heroic Games Launcher', option: "heroic"}
+  - !software:
+      option: "heroic"
+      name: "heroic-games-launcher.install"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Rare', option: "rare"}
+  - !software:
+      option: "rare"
+      name: "rare"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Hydra', option: "hydra"}
+  - !software:
+      option: "hydra"
+      name: "hydra-launcher"
+      source: chocolatey
+
+  # ========================================================
+  # Messengers
+  # ========================================================
+  - !writeStatus: {status: 'Installing Discord', option: "discord"}
+  - !software:
+      option: "discord"
+      name: "discord"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Telegram', option: "telegram"}
+  - !software:
+      option: "telegram"
+      name: "telegram"
+      source: chocolatey
+
+  # ========================================================
+  # System Utilities & Gamer Tools
+  # ========================================================
+  - !writeStatus: {status: 'Installing Process Lasso', option: "processlasso"}
+  - !software:
+      option: "processlasso"
+      name: "processlasso"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing MSI Afterburner', option: "msiafterburner"}
+  - !software:
+      option: "msiafterburner"
+      name: "msi-afterburner"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing LatencyMon', option: "latencymon"}
+  - !software:
+      option: "latencymon"
+      name: "latencymon"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing 7-Zip', option: "7zip"}
+  - !software:
+      option: "7zip"
+      name: "7zip.install"
+      source: chocolatey
+
+  - !writeStatus: {status: 'Installing Notepad++', option: "notepadplusplus"}
+  - !software:
+      option: "notepadplusplus"
+      name: "notepadplusplus.install"
+      source: chocolatey
+
+  # Onedrive
+  - !status: {status: 'Removing OneDrive'}
+  - !cmd: {command: 'OneDriveSetup /uninstall', runas: currentUserElevated, wait: true}
+  - !file: {path: '%ProgramData%\Microsoft OneDrive'}
+  - !file: {path: '%UserProfile%\OneDrive'}
+  - !file: {path: '%LocalAppdata%\Microsoft\OneDrive'}
+  - !file: {path: '%SystemRoot%\System32\OneDriveSetup.exe'}
+  - !file: {path: '%SystemRoot%\SysWOW64\OneDriveSetup.exe'}
+  - !registryKey: {path: 'HKCU\Software\Microsoft\OneDrive'}
+  - !registryKey: {path: 'HKCU\Software\WOW6432Node\Microsoft\OneDrive'}
+  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\BannerStore'}
+  - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\BannerStore'}
+  - !registryValue: {path: 'HKCU\Environment', value: 'OneDrive', operation: 'delete'} 
+  - !powerShell: {command: "Get-ScheduledTask | Where-Object { $_.TaskName -like '*Oned*' } | ForEach-Object { Unregister-ScheduledTask -TaskName $_.TaskName -Confirm:$false }", runas: currentUserElevated, wait: true}      

@@ -1,0 +1,32 @@
+title: APPX Removal
+actions:
+  # Удаление приложений
+  - !appx: {name: '*BingNews*'}
+  - !appx: {name: '*BingWeather*'}
+  - !appx: {name: '*Copilot*'}
+  - !appx: {name: '*GetHelp*'}
+  - !appx: {name: '*Getstarted*'}
+  - !appx: {name: '*MicrosoftOfficeHub*'}
+  - !appx: {name: '*MicrosoftSolitaireCollection*'}
+  - !appx: {name: '*MicrosoftStickyNotes*'}
+  - !appx: {name: '*People*'}
+  - !appx: {name: '*PowerAutomateDesktop*'}
+  - !appx: {name: '*ScreenSketch*'}
+  - !appx: {name: '*Todos*'}
+  - !appx: {name: '*Win32WebViewHost*'}
+  - !appx: {name: '*Windows.Photos*'}
+  - !appx: {name: '*XboxGameOverlay*'}
+  - !appx: {name: '*XboxGamingOverlay*'}
+  - !appx: {name: '*XboxSpeechToTextOverlay*'}
+  - !appx: {name: '*YourPhone*'}
+  - !appx: {name: '*ZuneMusic*'}
+  - !appx: {name: '*ZuneVideo*'}
+  - !appx: {name: '*MicrosoftFamily*'}
+  - !appx: {name: '*QuickAssist*'}
+  - !appx: {name: '*MicrosoftTeams*'}
+  - !appx: {name: '*WebExperience*'}
+
+  # Очистка кэша меню Пуск и Поиска (чтобы исчезли иконки удаленных программ)
+  - !appx: {operation: clearCache, name: '*Client.CBS*'}
+  - !appx: {operation: clearCache, name: '*StartMenuExperienceHost*'}
+  - !appx: {operation: clearCache, name: '*Windows.Search*'}

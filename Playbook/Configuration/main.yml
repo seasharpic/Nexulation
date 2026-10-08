@@ -1,0 +1,29 @@
+title: Main
+actions:  
+  - !writeStatus: {status: 'Removing APPX packages...'}
+  - !task: 
+      path: 'Tasks/appx.yml'
+      option: 'appx'
+  
+  - !writeStatus: {status: 'Installing software...'} 
+  - !task: {path: 'Tasks/software.yml'}
+
+  - !writeStatus: {status: 'Configuring Windows features...'}
+  - !task: {path: 'Tasks/wincomps.yml'}
+
+  - !writeStatus: {status: 'Optimizing services...'}
+  - !task: {path: 'Tasks/services.yml'}
+
+  - !writeStatus: {status: 'Disabling Windows Defender...', option: 'disable_defender'}
+  - !task:
+      path: 'Tasks/defender.yml'
+      option: 'disable_defender'
+
+  - !writeStatus: {status: 'Optimizing system...'} 
+  - !task: {path: 'Tasks/tweaks.yml'}
+
+  - !writeStatus: {status: 'Customizing system...'}
+  - !task: {path: 'Tasks/customization.yml'}
+
+  - !writeStatus: {status: 'Performing final cleanup...'}
+  - !task: {path: 'Tasks/cleanup.yml'}

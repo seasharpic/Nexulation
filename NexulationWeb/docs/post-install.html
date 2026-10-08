@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-Install | Nexulation Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3">
+          <img src="../assets/logo.png" alt="Nexulation Logo" class="w-8 h-8 object-contain">
+          <span class="font-bold text-lg tracking-tight text-white">NEXULATION</span>
+        </a>
+      </div>
+
+      <!-- Top Header Nav (Strictly Download & Documentation) -->
+      <nav class="flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="../index.html#download" class="hover:text-white transition-colors">Download</a>
+        <a href="post-install.html" class="text-cyan-400 font-semibold">Documentation</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="../index.html#download" class="px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-colors shadow-sm">
+          Download Playbook
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-6 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-slate-800/60">
+      
+      <!-- Search Input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <input type="text" placeholder="Search..." class="w-full pl-9 pr-12 py-2 text-xs rounded-lg bg-slate-900 border border-slate-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-cyan-500/50">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">Ctrl K</span>
+        </div>
+      </div>
+
+      <!-- Introduction Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Introduction</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="quick-start.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Quick Start</a></li>
+          <li><a href="what-is-nexulation.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">What is Nexulation?</a></li>
+          <li><a href="comparison.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Comparison</a></li>
+          <li><a href="features.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Features Overview</a></li>
+        </ul>
+      </div>
+
+      <!-- Playbook Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Playbook</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="install.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Running Nexulation</a></li>
+          <li><a href="iso.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">ISO Injection</a></li>
+          <li><a href="uninstall.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Uninstall</a></li>
+        </ul>
+      </div>
+
+      <!-- Setup Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Setup</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="drivers.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Installing Drivers</a></li>
+          <li><a href="post-install.html" class="block py-1.5 px-3 rounded-md font-semibold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20">Post-Install</a></li>
+        </ul>
+      </div>
+
+      <!-- Help Group -->
+      <div>
+        <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Help</div>
+        <ul class="space-y-1 text-xs">
+          <li><a href="troubleshoot.html" class="block py-1.5 px-3 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 transition-colors">Troubleshoot</a></li>
+        </ul>
+      </div>
+
+      <!-- Sidebar Footer Links -->
+      <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between text-slate-500 text-xs">
+        <a href="https://github.com" target="_blank" class="hover:text-slate-300 transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <button class="p-1.5 rounded-md hover:bg-slate-900 text-slate-400 hover:text-slate-200 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Main Content -->
+    <main class="lg:col-span-6 space-y-10">
+      
+      <!-- Top Title Header -->
+      <div class="border-b border-slate-800/80 pb-6">
+        <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase">Setup</span>
+        <h1 class="text-3xl font-extrabold text-white tracking-tight mt-1 mb-3">Post-Install</h1>
+        <h2 class="text-xl font-bold text-slate-200 mb-3">Post-Install Guide</h2>
+        <p class="text-slate-400 text-xs leading-relaxed mb-3">
+          The Nexulation playbook is carefully configured and tweaked to achieve stability while still maintaining excellent performance and compatibility. Having said that, there's only so much that we can do on our end.
+        </p>
+        <p class="text-slate-400 text-xs leading-relaxed mb-3">
+          Certain components are specific to each PC, like drivers, BIOS, hardware etc. We simply cannot pre-tweak these kinds of components, as it is impossible to do while still retaining our focus on high compatibility with most systems.
+        </p>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          However, this does NOT mean that we cannot help you tweak those things yourself. Any Nexulation install is very capable out of the box, but if you want the absolute optimal experience, we recommend that you follow and apply the Post-Install guide.
+        </p>
+      </div>
+
+      <!-- Section: Activating Windows -->
+      <section id="activating-windows" class="scroll-mt-24 space-y-4">
+        <h2 class="text-xl font-bold text-white tracking-tight">Activating Windows</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Nexulation may activate itself automatically upon installation, using the OEM key connected to your BIOS, just like any other Windows version would do.
+        </p>
+
+        <!-- Amber Warning Callout Box -->
+        <div class="bg-amber-500/10 border-l-4 border-amber-500 border-y border-r border-amber-500/20 rounded-r-lg p-4 text-xs text-amber-200 flex gap-3">
+          <div class="flex-shrink-0 text-amber-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          </div>
+          <div>
+            Nexulation does not provide any means of illegitimate Windows activation. Any attempt to activate Windows in an illegitimate way is strictly against our policy and is not supported or endorsed by Nexulation!
+          </div>
+        </div>
+
+        <p class="text-slate-400 text-xs leading-relaxed pt-2">
+          If your Nexulation installation isn't automatically activated, follow one of the methods listed down below.
+        </p>
+
+        <!-- Accordion Methods -->
+        <div class="space-y-3 pt-2">
+          
+          <!-- Method 1 -->
+          <details class="group bg-slate-900/90 border border-slate-800 rounded-lg overflow-hidden transition-all duration-200">
+            <summary class="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-800/50 transition-colors">
+              <span class="text-xs font-semibold text-white flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                Method 1 - Windows Settings
+              </span>
+            </summary>
+            <div class="p-4 pt-0 border-t border-slate-800/60 text-xs text-slate-400 space-y-2">
+              <p>1. Open <strong class="text-slate-200">Settings</strong> (Win + I) and navigate to <strong class="text-slate-200">System &gt; Activation</strong>.</p>
+              <p>2. Click <strong class="text-slate-200">Change product key</strong> and enter your official Windows 10/11 digital license key.</p>
+              <p>3. Select <strong class="text-cyan-400">Activate</strong> to complete online digital entitlement.</p>
+            </div>
+          </details>
+
+          <!-- Method 2 -->
+          <details class="group bg-slate-900/90 border border-slate-800 rounded-lg overflow-hidden transition-all duration-200">
+            <summary class="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-800/50 transition-colors">
+              <span class="text-xs font-semibold text-white flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                Method 2 - Control Panel
+              </span>
+            </summary>
+            <div class="p-4 pt-0 border-t border-slate-800/60 text-xs text-slate-400 space-y-2">
+              <p>1. Open <strong class="text-slate-200">Control Panel</strong> and select <strong class="text-slate-200">System and Security &gt; System</strong>.</p>
+              <p>2. Scroll down to <strong class="text-slate-200">Windows Activation</strong> and click <strong class="text-slate-200">Change product key</strong>.</p>
+            </div>
+          </details>
+
+          <!-- Method 3 -->
+          <details class="group bg-slate-900/90 border border-slate-800 rounded-lg overflow-hidden transition-all duration-200">
+            <summary class="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-800/50 transition-colors">
+              <span class="text-xs font-semibold text-white flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-slate-400 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                Method 3 - Command Prompt
+              </span>
+            </summary>
+            <div class="p-4 pt-0 border-t border-slate-800/60 text-xs text-slate-400 space-y-2 font-mono">
+              <p class="text-slate-300">Run Command Prompt as Administrator:</p>
+              <div class="bg-slate-950 p-2 rounded border border-slate-800 text-cyan-400">slmgr.vbs /ipk YOUR-PRODUCT-KEY-HERE</div>
+              <div class="bg-slate-950 p-2 rounded border border-slate-800 text-cyan-400">slmgr.vbs /ato</div>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- Section: Recommended First Steps -->
+      <section id="recommended-first-steps" class="scroll-mt-24 space-y-4 pt-4 border-t border-slate-800/80">
+        <h2 class="text-xl font-bold text-white tracking-tight">Recommended first steps</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Follow these essential configuration steps to achieve maximum stability and latency reduction on your new installation.
+        </p>
+      </section>
+
+      <!-- Section: Set time and language -->
+      <section id="set-time-and-language" class="scroll-mt-24 space-y-3">
+        <h3 class="text-lg font-bold text-slate-200">Set time and language</h3>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Configure your local keyboard layout, language packs, and regional time zones in <strong class="text-slate-200">Settings &gt; Time &amp; Language</strong>.
+        </p>
+      </section>
+
+      <!-- Section: GPU drivers -->
+      <section id="gpu-drivers" class="scroll-mt-24 space-y-3">
+        <h3 class="text-lg font-bold text-slate-200">GPU drivers</h3>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Download clean graphics drivers from NVIDIA, AMD, or Intel. For NVIDIA cards, we recommend using NVCleanstall to remove background telemetry services.
+        </p>
+      </section>
+
+      <!-- Section: Other Device drivers -->
+      <section id="other-device-drivers" class="scroll-mt-24 space-y-3">
+        <h3 class="text-lg font-bold text-slate-200">Other Device drivers</h3>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Refer to the dedicated <a href="drivers.html" class="text-cyan-400 underline hover:text-cyan-300">Installing Drivers Guide</a> for motherboard chipset, network, and audio driver setup procedures.
+        </p>
+      </section>
+
+      <!-- Section: DirectX Runtime -->
+      <section id="directx-runtime" class="scroll-mt-24 space-y-3">
+        <h3 class="text-lg font-bold text-slate-200">DirectX Runtime</h3>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Legacy DirectX 9/11 titles require the DirectX End-User Runtimes Web Installer to prevent missing DLL errors (`d3dx9_43.dll`, etc.).
+        </p>
+      </section>
+
+      <!-- Section: NVIDIA Control Panel Tweaks -->
+      <section id="nvidia-control-panel-tweaks" class="scroll-mt-24 space-y-4 pt-4 border-t border-slate-800/80">
+        <h2 class="text-xl font-bold text-white tracking-tight">NVIDIA Control Panel Tweaks</h2>
+
+        <div id="open-nvidia-control-panel" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Open NVIDIA Control Panel</h3>
+          <p class="text-slate-400 text-xs">Right-click your desktop and select NVIDIA Control Panel.</p>
+        </div>
+
+        <div id="adjust-image-settings-with-preview" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Adjust Image Settings with Preview</h3>
+          <p class="text-slate-400 text-xs">Select <strong class="text-slate-200">Use the advanced 3D image settings</strong>.</p>
+        </div>
+
+        <div id="manage-3d-settings" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Manage 3D Settings</h3>
+          <ul class="text-xs text-slate-400 space-y-1 list-disc list-inside">
+            <li>Low Latency Mode: <span class="text-cyan-400">On</span> or <span class="text-cyan-400">Ultra</span></li>
+            <li>Power Management Mode: <span class="text-cyan-400">Prefer Maximum Performance</span></li>
+            <li>Texture filtering - Quality: <span class="text-cyan-400">High Performance</span></li>
+          </ul>
+        </div>
+
+        <div id="configure-surround-physx" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Configure Surround PhysX</h3>
+          <p class="text-slate-400 text-xs">Set PhysX processor explicitly to your discrete NVIDIA GPU.</p>
+        </div>
+
+        <div id="change-resolution" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Change resolution</h3>
+          <p class="text-slate-400 text-xs">Ensure maximum refresh rate (e.g. 144Hz, 240Hz, 360Hz) is selected under PC resolutions.</p>
+        </div>
+
+        <div id="adjust-desktop-color-settings" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Adjust desktop color settings</h3>
+          <p class="text-slate-400 text-xs">Optionally adjust Digital Vibrance to 55%-65% for improved visibility in games.</p>
+        </div>
+
+        <div id="adjust-desktop-size-and-position" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Adjust desktop size and position</h3>
+          <p class="text-slate-400 text-xs">Set scaling mode to <strong class="text-slate-200">No scaling</strong> or <strong class="text-slate-200">Display scaling</strong> to minimize input lag.</p>
+        </div>
+
+        <div id="setup-g-sync" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Setup G-SYNC</h3>
+          <p class="text-slate-400 text-xs">Enable G-SYNC for Fullscreen mode if using a compatible variable refresh rate monitor.</p>
+        </div>
+
+        <div id="adjust-video-color-settings" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Adjust video color settings</h3>
+          <p class="text-slate-400 text-xs">Select <strong class="text-slate-200">With the NVIDIA settings</strong> &gt; Advanced &gt; Dynamic Range: <strong class="text-cyan-400">Full (0-255)</strong>.</p>
+        </div>
+
+        <div id="adjust-video-image-settings" class="space-y-2">
+          <h3 class="text-sm font-bold text-slate-200">Adjust video image settings</h3>
+          <p class="text-slate-400 text-xs">Disable edge enhancement and noise reduction to reduce GPU processing overhead.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right "On this page" TOC Navigation -->
+    <aside class="hidden lg:block lg:col-span-3 space-y-4 sticky top-24 h-[calc(100vh-7rem)] overflow-y-auto pl-4 border-l border-slate-800/60 text-xs">
+      <div class="flex items-center gap-2 font-bold text-slate-300 uppercase tracking-wider text-[11px]">
+        <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+        On this page
+      </div>
+      <ul class="space-y-1.5 text-slate-400 border-l border-slate-800 pl-3">
+        <li><a href="#activating-windows" class="block py-1 hover:text-cyan-400 text-cyan-400 font-medium transition-colors">Activating Windows</a></li>
+        <li><a href="#recommended-first-steps" class="block py-1 hover:text-cyan-400 transition-colors">Recommended first steps</a></li>
+        <li><a href="#set-time-and-language" class="block py-1 hover:text-cyan-400 transition-colors pl-2">Set time and language</a></li>
+        <li><a href="#gpu-drivers" class="block py-1 hover:text-cyan-400 transition-colors pl-2">GPU drivers</a></li>
+        <li><a href="#other-device-drivers" class="block py-1 hover:text-cyan-400 transition-colors pl-2">Other Device drivers</a></li>
+        <li><a href="#directx-runtime" class="block py-1 hover:text-cyan-400 transition-colors pl-2">DirectX Runtime</a></li>
+        <li><a href="#nvidia-control-panel-tweaks" class="block py-1 hover:text-cyan-400 transition-colors">NVIDIA Control Panel Tweaks</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-slate-900 text-center text-xs text-slate-600 mt-20">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>Nexulation Documentation &copy; 2026. All rights reserved.</div>
+      <div class="flex gap-6 text-slate-500">
+        <a href="../index.html" class="hover:text-slate-300">Home</a>
+        <a href="../index.html#download" class="hover:text-slate-300">Download</a>
+        <a href="drivers.html" class="hover:text-slate-300">Drivers</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

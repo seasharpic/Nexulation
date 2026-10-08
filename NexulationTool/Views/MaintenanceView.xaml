@@ -1,0 +1,29 @@
+<UserControl x:Class="NexulationTool.Views.MaintenanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock x:Name="TxtHeadingMaintenance" Text="System Maintenance &amp; Cleaning" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}" Margin="0,0,0,14"/>
+
+            <Border x:Name="CardClean" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="1-CLICK TEMP &amp; CACHE CLEANER" FontWeight="Bold" FontSize="13" Foreground="#34D399" Margin="0,0,0,6"/>
+                    <TextBlock Text="Safely purges temporary files, shader caches, and Windows update temp files." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                    <Button x:Name="BtnCleanTemp" Height="40" Background="#059669" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="SemiBold" FontSize="12">
+                        <TextBlock Text="Clean Temp &amp; Shader Caches"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="CardRAMTrim" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="RAM WORKING SET TRIMMER" FontWeight="Bold" FontSize="13" Foreground="#34D399" Margin="0,0,0,6"/>
+                    <TextBlock Text="Flushes process working sets to free up standby memory immediately." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                    <Button x:Name="BtnTrimRAM" Height="40" Background="#047857" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="SemiBold" FontSize="12">
+                        <TextBlock Text="Trim System RAM Working Set"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

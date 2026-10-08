@@ -1,0 +1,29 @@
+<UserControl x:Class="NexulationTool.Views.DiagnosticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock x:Name="TxtHeadingDiagnostics" Text="Diagnostics &amp; Polling Rate Analyzer" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}" Margin="0,0,0,14"/>
+
+            <Border x:Name="CardXperf" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="DPC/ISR LATENCY TRACER (xperf / WPA)" FontWeight="Bold" FontSize="13" Foreground="#F59E0B" Margin="0,0,0,6"/>
+                    <TextBlock Text="Runs a 10-second ETW kernel trace to detect driver DPC/ISR latency spikes. Saves .etl log to Desktop and opens WPA." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                    <Button x:Name="BtnRunXperf" Height="40" Background="#D97706" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="SemiBold" FontSize="12">
+                        <TextBlock Text="Run DPC/ISR Latency Trace (xperf / WPA)"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="CardMouseTester" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="MOUSETESTER (POLLING RATE &amp; LATENCY)" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource AccentBrush}" Margin="0,0,0,6"/>
+                    <TextBlock Text="Interactive real-time mouse polling rate (1000Hz - 8000Hz+) and packet delivery interval analyzer with microsecond precision." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                    <Button x:Name="BtnLaunchMouseTester" Height="40" Background="{DynamicResource AccentBrush}" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="SemiBold" FontSize="12">
+                        <TextBlock Text="Launch MouseTester Window"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

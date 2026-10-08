@@ -1,0 +1,20 @@
+<UserControl x:Class="NexulationTool.Views.CustomizationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock x:Name="TxtHeadingCustomization" Text="System Customization &amp; Wallpaper" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}" Margin="0,0,0,14"/>
+
+            <!-- Item: Wallpaper Sync -->
+            <Border x:Name="CardWallpaperSync" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="OFFICIAL NEXULATION WALLPAPER" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource AccentBrush}" Margin="0,0,0,6"/>
+                    <TextBlock Text="Applies the official Nexulation Dark/Light wallpaper to your Windows desktop." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                    <Button x:Name="BtnApplyWallpaper" Height="38" Background="{DynamicResource AccentBrush}" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="SemiBold" FontSize="11">
+                        <TextBlock Text="Apply Official Nexulation Wallpaper"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,59 @@
+<UserControl x:Class="NexulationTool.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock x:Name="TxtHeadingSettings" Text="Application Settings &amp; UI Theme" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}" Margin="0,0,0,14"/>
+
+            <!-- Item 1: Theme Switcher Card (Auto / Dark / Light) -->
+            <Border x:Name="CardTheme" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="TxtCardThemeTitle" Text="UI Theme Customization" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock x:Name="TxtCardThemeDesc" Text="Select UI Theme mode: System Auto, Fluent Dark, or Clean Light." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button x:Name="BtnThemeAuto" Width="70" Height="34" Content="Auto" Background="{DynamicResource AccentBrush}" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold" Margin="0,0,6,0"/>
+                        <Button x:Name="BtnThemeDark" Width="70" Height="34" Content="Dark" Background="{DynamicResource HeaderBgBrush}" Foreground="{DynamicResource SecondaryTextBrush}" BorderThickness="1" BorderBrush="{DynamicResource CardBorderBrush}" Cursor="Hand" FontWeight="SemiBold" Margin="0,0,6,0"/>
+                        <Button x:Name="BtnThemeLight" Width="70" Height="34" Content="Light" Background="{DynamicResource HeaderBgBrush}" Foreground="{DynamicResource SecondaryTextBrush}" BorderThickness="1" BorderBrush="{DynamicResource CardBorderBrush}" Cursor="Hand" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Item 2: Auto-Run with Windows -->
+            <Border x:Name="CardAutoRun" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="TxtCardAutoRunTitle" Text="Auto-Run with Windows Startup" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Launches Nexulation Tool automatically when Windows boots up." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleAutoRun" Grid.Column="1" Width="110" Height="36" Content="Disabled" Background="#475569" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Item 3: Auto Lock 0.5ms Timer on Startup -->
+            <Border x:Name="CardAutoTimer" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock x:Name="TxtCardAutoTimerTitle" Text="Auto-Lock 0.5ms System Timer on Startup" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Locks timer resolution to 0.500 ms immediately upon launch." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleAutoTimer" Grid.Column="1" Width="110" Height="36" Content="Enabled" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

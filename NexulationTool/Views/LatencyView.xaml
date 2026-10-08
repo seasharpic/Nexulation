@@ -1,0 +1,99 @@
+<UserControl x:Class="NexulationTool.Views.LatencyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock x:Name="TxtHeadingLatency" Text="Low-Latency Optimizations" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}" Margin="0,0,0,14"/>
+
+            <!-- Toggle 1: MSI Mode -->
+            <Border x:Name="CardMSI" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="PCIe MSI Mode (GPU &amp; USB)" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Eliminates IRQ conflicts and lowers DPC/ISR interrupt latency." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleMSI" Grid.Column="1" Width="100" Height="36" Content="Enabled" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Toggle 2: Low-Ping TCP -->
+            <Border x:Name="CardPing" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Low-Ping TCP (No Nagle)" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Instant TCP ACK packets without buffering delay." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnTogglePing" Grid.Column="1" Width="100" Height="36" Content="Enabled" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Toggle 3: Memory Compression -->
+            <Border x:Name="CardMemComp" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Memory Compression (MMAgent)" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Disables CPU-overhead RAM page compression." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleMemComp" Grid.Column="1" Width="100" Height="36" Content="Disabled" Background="#EF4444" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Toggle 4: Hypervisor BCD -->
+            <Border x:Name="CardHypervisor" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Hypervisor BCD Launch" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Disabled gives bare-metal CPU access (+5-10% FPS)." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleHypervisor" Grid.Column="1" Width="100" Height="36" Content="Off" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Toggle 5: Keyboard Repeat Rate -->
+            <Border x:Name="CardKeyboard" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16" Margin="0,0,0,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Keyboard Max Repeat Rate" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="Delay=0, Speed=31 for instant keyboard response." FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleKeyboard" Grid.Column="1" Width="100" Height="36" Content="Enabled" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+
+            <!-- Toggle 6: System Timer Resolution (0.5ms) -->
+            <Border x:Name="CardTimerRes" Background="{DynamicResource CardBgBrush}" BorderBrush="{DynamicResource CardBorderBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="0.5ms Global System Timer" FontWeight="Bold" FontSize="13" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock x:Name="TxtTimerResInfo" Text="Current Resolution: 0.500 ms (Locked)" FontSize="11" Foreground="#34D399" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="BtnToggleTimerRes" Grid.Column="1" Width="100" Height="36" Content="0.5 ms" Background="#10B981" Foreground="White" BorderThickness="0" Cursor="Hand" FontWeight="Bold"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
